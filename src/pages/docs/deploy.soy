@@ -1,0 +1,26 @@
+---
+description: "Deploy description."
+title: "Deploy"
+---
+
+{namespace pageDocsDeploy}
+
+/**
+ * This template will be rendered by SoyWeb when the user loads static.soy.
+ * It deliberately includes dummy data so the designer can get a feel for how
+ * the task list will appear with real data rather with minimal copy and paste.
+ */
+{template .render}
+	{call docs.render data="all"}
+		{param content kind="html"}
+			<h2>Deploy</h2>
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				Curabitur nulla libero, eleifend in euismod eget, fringilla id
+				diam. Proin quis interdum ipsum. Fusce eros metus, hendrerit ut
+				egestas nec, sagittis id velit.
+			</p>
+		{/param}
+	{/call}
+{/template}
