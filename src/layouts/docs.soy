@@ -1,0 +1,35 @@
+{namespace docs}
+
+/**
+ * @param content
+ * @param site
+ */
+{template .render}
+	{call main.render data="all"}
+		{param content kind="html"}
+			<div class="sidenav-menu-slider open">
+				<div class="sidebar sidebar-default sidenav-menu">
+					<div class="sidebar-body">
+						{call Navigation.render}
+							{param elementClasses: 'nav nav-square nav-pills nav-stacked sidenav' /}
+							{param section: $site.index.children[0] /}
+						{/call}
+					</div>
+				</div>
+			</div>
+
+			<div class="sidenav-offset">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-9">
+							{$content}
+						</div>
+
+						<div class="col-md-3"></div>
+					</div>
+				</div>
+			</div>
+		{/param}
+		{param elementClasses: 'docs' /}
+	{/call}
+{/template}

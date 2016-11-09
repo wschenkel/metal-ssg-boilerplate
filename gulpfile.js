@@ -1,6 +1,11 @@
-const gulp = require('gulp');
 const connect = require('gulp-connect');
+const gulp = require('gulp');
+const registerTasks = require('metal-ssg').registerTasks;
 const sass = require('gulp-sass');
+
+registerTasks({
+	gulp: gulp
+});
 
 // HTML ------------------------------------------------------------------------
 
@@ -35,4 +40,4 @@ gulp.task('watch', () => {
 
 // Build -----------------------------------------------------------------------
 
-gulp.task('default', ['css', 'html', 'server']);
+gulp.task('default', ['generate', 'css', 'html', 'server']);

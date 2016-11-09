@@ -1,0 +1,43 @@
+{namespace base}
+
+/**
+ * @param content
+ * @param? frontMatter
+ * @param? scripts
+ * @param serialized
+ */
+{template .render private="true"}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="minimum-scale=1.0, width=device-width" name="viewport">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="description" content="{$frontMatter.description ?: ''}">
+
+		<title>{$frontMatter.title}</title>
+
+		<link rel="stylesheet" href="/css/main.css">
+	</head>
+	<body>
+		<div id="pageComponent">
+			{$content}
+		</div>
+
+		<script src="/js/bundle.js"></script>
+
+		{if $scripts}
+			{foreach $script in $scripts}
+				<script src="{$script}"></script>
+			{/foreach}
+		{/if}
+
+		<script>
+			metal.Component.render(metal['{$frontMatter.componentName}'], {lb}
+				element: '#pageComponent',
+				site: JSON.parse({$serialized})
+			{rb});
+		</script>
+	</body>
+</html>
+{/template}
